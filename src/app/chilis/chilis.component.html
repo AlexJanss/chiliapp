@@ -1,0 +1,14 @@
+<h2>Chilis</h2>
+
+<ul class="chilis">
+  <li *ngFor="let chili of chilis" 
+  [class.selected]="chili === selectedChili"
+  (click)="onSelect(chili)">
+    <span class="badge">{{chili.id}}</span> {{chili.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedChili">
+<h2>{{selectedChili.name | uppercase}} Details</h2>
+<div><span>id: </span>{{selectedChili.id}}</div>
+</div>

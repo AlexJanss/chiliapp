@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Chili } from '../chili';
-import { CHILIS } from '../mock-chilis';
+import { ChiliService } from '../chili.service';
 
 @Component({
   selector: 'app-chilis',
@@ -8,16 +8,26 @@ import { CHILIS } from '../mock-chilis';
   styleUrls: ['./chilis.component.css']
 })
 
-export class ChilisComponent implements OnInit {
-
-  chilis = CHILIS;
+export class ChilisComponent implements OnInit{
+  @Output() chiliSelect: EventEmitter<any> = new EventEmitter();
   selectedChili: Chili;
-  onSelect(chili: Chili): void {
-  this.selectedChili = chili;
-}
-  constructor() { }
+  chilis: Chili[];
+
+  constructor(private chiliService: ChiliService) { }
 
   ngOnInit() {
+    this.getChilis();
   }
+
+  onSelect(chili: Chili): void {
+  this.selectedChili = chili;
+  this.chiliSelect.emit(this.selectedChili);
+}
+
+getChilis(): void {
+  this.chiliService.getChilis().subscribe(chilis => this.chilis = chilis);
+}
+
+ 
 
 }

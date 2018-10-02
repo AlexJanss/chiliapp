@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Chili } from './chili';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'chiliapp';
+
+  selectedChili: Chili;
+
+  getChili($event) {
+    this.selectedChili = $event;
+    
+  }
 }

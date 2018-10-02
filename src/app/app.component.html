@@ -4,5 +4,5 @@
   </h1>
 </div>
 
-<app-chilis></app-chilis>
+<app-chilis (chiliSelect)="getChili($event)"></app-chilis>
 <app-chili-detail [chili]="selectedChili"></app-chili-detail>

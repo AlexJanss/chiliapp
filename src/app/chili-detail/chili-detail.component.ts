@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component,  Input } from '@angular/core';
 import { Chili } from '../chili';
 
 @Component({
@@ -6,11 +6,8 @@ import { Chili } from '../chili';
   templateUrl: './chili-detail.component.html',
   styleUrls: ['./chili-detail.component.css']
 })
-export class ChiliDetailComponent implements OnInit {
+export class ChiliDetailComponent {
   @Input() chili: Chili;
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }
